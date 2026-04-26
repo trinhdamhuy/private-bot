@@ -2,7 +2,7 @@
   "name": "getting-started",
   "version": "1.0.0",
   "description": "Discord example app",
-  "main": "app/app.js",
+  "main": "app/app.ts",
   "type": "module",
   "engines": {
     "node": "24.x"
