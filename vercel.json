@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "functions": {
     "app/app.ts": {
       "runtime": "@vercel/node"
