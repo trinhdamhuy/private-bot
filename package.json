@@ -10,7 +10,9 @@
   "scripts": {
     "start": "tsx app/app.ts",
     "register": "tsx app/commands.ts",
-    "dev": "nodemon --watch app --ext ts --exec tsx app/app.ts"
+    "dev": "nodemon --watch app --ext ts --exec tsx app/app.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "author": "Huy",
   "license": "MIT",
@@ -27,8 +29,9 @@
     "globals": "^17.5.0",
     "nodemon": "^3.1.0",
     "tsx": "^4.20.6",
+    "types": "^0.1.1",
     "typescript": "^5.9.3",
-    "types": "^0.1.1"
+    "typescript-eslint": "^8.59.0"
   },
   "keywords": []
 }

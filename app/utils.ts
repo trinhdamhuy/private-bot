@@ -1,14 +1,20 @@
 import "dotenv/config";
 import { verifyKey } from "discord-interactions";
 import { Command } from "./types.js";
+import { Request, Response } from "express";
 
-export function VerifyDiscordRequest(clientKey) {
-  return function (req, res, buf) {
+export function VerifyDiscordRequest(clientKey: string) {
+  return function (req: Request, res: Response, buf: Buffer) {
     const signature = req.get("X-Signature-Ed25519");
     const timestamp = req.get("X-Signature-Timestamp");
     console.log(signature, timestamp, clientKey);
 
-    const isValidRequest = verifyKey(buf, signature, timestamp, clientKey);
+    const isValidRequest = verifyKey(
+      buf,
+      signature as string,
+      timestamp as string,
+      clientKey,
+    );
     if (!isValidRequest) {
       res.status(401).send("Bad request signature");
       throw new Error("Bad request signature");
