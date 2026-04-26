@@ -1,7 +1,8 @@
 export type Command = {
   name: string;
-  description: string;
-  options: CommandOption[];
+  description?: string;
+  options?: CommandOption[];
+  type?: number;
 };
 
 export type CommandOption = {
