@@ -6,7 +6,7 @@ import express, { Request, Response } from "express";
 // Create an express app
 const app = express();
 // Parse request body and verifies incoming requests using discord-interactions package
-app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY) }));
+app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY!) }));
 
 /**
  * Interactions endpoint URL where Discord will send HTTP requests

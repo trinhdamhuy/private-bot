@@ -12,7 +12,9 @@
     "register": "tsx app/commands.ts",
     "dev": "nodemon --watch app --ext ts --exec tsx app/app.ts",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "author": "Huy",
   "license": "MIT",
@@ -26,8 +28,10 @@
     "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.6",
     "eslint": "^10.2.1",
+    "eslint-config-prettier": "^10.1.8",
     "globals": "^17.5.0",
     "nodemon": "^3.1.0",
+    "prettier": "^3.8.3",
     "tsx": "^4.20.6",
     "types": "^0.1.1",
     "typescript": "^5.9.3",
