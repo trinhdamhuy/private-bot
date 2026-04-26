@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "functions": {
-    "app/app.ts": {
-      "runtime": "@vercel/node"
-    }
-  },
-  "routes": [{ "src": "/(.*)", "dest": "/app/app.ts" }]
-}
