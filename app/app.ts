@@ -53,7 +53,7 @@ app.post("/interactions", async function (req: Request, res: Response) {
         body: JSON.stringify({
           content: text?.trim(),
           allowed_mentions: {
-            parse: [],
+            parse: ["users", "roles"],
           },
         }),
       });
