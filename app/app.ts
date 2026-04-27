@@ -128,28 +128,17 @@ app.post("/interactions", async function (req: Request, res: Response) {
           title: "Anonymous Reply",
           components: [
             {
-              type: ComponentType.Label,
-              custom_id: "message_label",
-              label: "Your anonymous reply",
+              type: ComponentType.ActionRow,
               components: [
                 {
                   type: ComponentType.TextInput,
                   custom_id: "message",
                   label: "Your message",
                   style: TextInputStyle.Paragraph,
+                  min_length: 2,
+                  max_length: 2000,
+                  placeholder: "Your anonymous reply",
                   required: true,
-                },
-              ],
-            },
-            {
-              type: ComponentType.Label,
-              custom_id: "tts_label",
-              label: "Enable TTS? (true/false)",
-              components: [
-                {
-                  type: ComponentType.Checkbox,
-                  custom_id: "tts",
-                  value: false,
                 },
               ],
             },
@@ -180,14 +169,6 @@ app.post("/interactions", async function (req: Request, res: Response) {
       .find((component: { custom_id: string }) => component.custom_id === "message")?.value as
       | string
       | undefined;
-    const tts = data.components
-      ?.flatMap(
-        (component: { components?: { custom_id: string; value: string }[] }) =>
-          component.components ?? [],
-      )
-      .find((component: { custom_id: string }) => component.custom_id === "tts")?.value as
-      | boolean
-      | undefined;
 
     if (!text?.trim() || !targetChannelId || !targetMessageId) {
       return res.send({
@@ -204,7 +185,7 @@ app.post("/interactions", async function (req: Request, res: Response) {
         method: "POST",
         body: JSON.stringify({
           content: text.trim(),
-          tts: tts ?? false,
+          tts: true,
           allowed_mentions: {
             parse: ["users", "roles"],
             replied_user: false,
