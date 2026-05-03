@@ -9,12 +9,7 @@ export function VerifyDiscordRequest(clientKey: string) {
     const timestamp = req.get("X-Signature-Timestamp");
     console.log(signature, timestamp, clientKey);
 
-    const isValidRequest = verifyKey(
-      buf,
-      signature as string,
-      timestamp as string,
-      clientKey,
-    );
+    const isValidRequest = verifyKey(buf, signature as string, timestamp as string, clientKey);
     if (!isValidRequest) {
       res.status(401).send("Bad request signature");
       throw new Error("Bad request signature");
@@ -33,8 +28,7 @@ export async function DiscordRequest(endpoint: string, options: RequestInit) {
     headers: {
       Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
       "Content-Type": "application/json; charset=UTF-8",
-      "User-Agent":
-        "DiscordBot (https://github.com/trinhdamhuy/private-bot, 1.0.0)",
+      "User-Agent": "DiscordBot (https://github.com/trinhdamhuy/private-bot, 1.0.0)",
     },
     ...options,
   });
@@ -48,10 +42,7 @@ export async function DiscordRequest(endpoint: string, options: RequestInit) {
   return res;
 }
 
-export async function InstallGlobalCommands(
-  appId: string,
-  commands: Command[],
-) {
+export async function InstallGlobalCommands(appId: string, commands: Command[]) {
   // API endpoint to overwrite global commands
   const endpoint = `applications/${appId}/commands`;
 
