@@ -94,7 +94,7 @@ app.post("/interactions", async function (req: Request, res: Response) {
         return res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
-            content: "Could not send message. Check `reply_to` message ID and try again.",
+            content: "Could not send anonymous message. Please try again.",
             flags: InteractionResponseFlags.EPHEMERAL,
           },
         });
